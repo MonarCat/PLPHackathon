@@ -1,0 +1,894 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Moses Mwombe | Portfolio</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap">
+  <style>
+    :root {
+      --primary: #3a86ff;
+      --primary-dark: #2667cc;
+      --secondary: #8338ec;
+      --dark: #212529;
+      --light: #f8f9fa;
+      --gray: #6c757d;
+      --light-gray: #e9ecef;
+    }
+    
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    body {
+      font-family: 'Inter', sans-serif;
+      line-height: 1.6;
+      color: var(--dark);
+      background-color: var(--light);
+    }
+    
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+    
+    /* Header Styles */
+    header {
+      background-color: white;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+      position: fixed;
+      width: 100%;
+      top: 0;
+      z-index: 1000;
+    }
+    
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px 0;
+    }
+    
+    .logo {
+      display: flex;
+      align-items: center;
+      text-decoration: none;
+      font-size: 24px;
+      font-weight: 700;
+      color: var(--primary);
+    }
+    
+    .logo-img {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      margin-right: 10px;
+    }
+    
+    .nav-links {
+      display: flex;
+      list-style: none;
+    }
+    
+    .nav-links li {
+      margin-left: 30px;
+    }
+    
+    .nav-links a {
+      text-decoration: none;
+      color: var(--dark);
+      font-weight: 500;
+      transition: color 0.3s;
+    }
+    
+    .nav-links a:hover {
+      color: var(--primary);
+    }
+    
+    /* Hero Section */
+    .hero {
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      padding-top: 80px;
+      background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+    }
+    
+    .hero-content {
+      max-width: 600px;
+    }
+    
+    .hero h1 {
+      font-size: 48px;
+      margin-bottom: 20px;
+      font-weight: 700;
+    }
+    
+    .hero p {
+      font-size: 18px;
+      color: var(--gray);
+      margin-bottom: 30px;
+    }
+    
+    .btn {
+      display: inline-block;
+      padding: 12px 30px;
+      background-color: var(--primary);
+      color: white;
+      text-decoration: none;
+      border-radius: 30px;
+      font-weight: 500;
+      transition: all 0.3s;
+    }
+    
+    .btn:hover {
+      background-color: var(--primary-dark);
+      transform: translateY(-3px);
+      box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+    }
+    
+    /* Section Styles */
+    section {
+      padding: 100px 0;
+    }
+    
+    .section-title {
+      text-align: center;
+      margin-bottom: 60px;
+    }
+    
+    .section-title h2 {
+      font-size: 36px;
+      font-weight: 700;
+      margin-bottom: 15px;
+    }
+    
+    .section-title p {
+      color: var(--gray);
+      max-width: 700px;
+      margin: 0 auto;
+    }
+    
+    /* About Section */
+    .about-content {
+      display: flex;
+      align-items: center;
+      gap: 30px;
+      margin-top: 50px;
+    }
+    
+    .about-img {
+      flex: 1;
+    }
+    
+    .about-image {
+      width: 100%;
+      max-width: 400px;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+      shape-outside: circle(50%);
+      clip-path: circle(50% at 50% 50%);
+    }
+    
+    .about-text {
+      flex: 2;
+    }
+    
+    .about-text h2 {
+      font-size: 32px;
+      margin-bottom: 20px;
+      color: var(--primary);
+    }
+    
+    .about-text p {
+      font-size: 18px;
+      line-height: 1.6;
+      color: var(--gray);
+      margin-bottom: 15px;
+    }
+    
+    /* Skills Section */
+    .skills-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 30px;
+    }
+    
+    .skill-card {
+      background-color: white;
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+      transition: transform 0.3s;
+    }
+    
+    .skill-card:hover {
+      transform: translateY(-10px);
+    }
+    
+    .skill-card h3 {
+      font-size: 22px;
+      margin-bottom: 15px;
+      color: var(--primary);
+    }
+    
+    .skill-card ul {
+      list-style-position: inside;
+      margin-left: 10px;
+    }
+    
+    .skill-card li {
+      margin-bottom: 8px;
+      color: var(--gray);
+    }
+    
+    /* Education Section */
+    .timeline {
+      position: relative;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+    
+    .timeline::after {
+      content: '';
+      position: absolute;
+      width: 2px;
+      background-color: var(--light-gray);
+      top: 0;
+      bottom: 0;
+      left: 50%;
+      margin-left: -1px;
+    }
+    
+    .timeline-item {
+      padding: 10px 40px;
+      position: relative;
+      width: 50%;
+      box-sizing: border-box;
+    }
+    
+    .timeline-item::after {
+      content: '';
+      position: absolute;
+      width: 20px;
+      height: 20px;
+      background-color: white;
+      border: 4px solid var(--primary);
+      border-radius: 50%;
+      top: 15px;
+      z-index: 1;
+    }
+    
+    .left {
+      left: 0;
+    }
+    
+    .right {
+      left: 50%;
+    }
+    
+    .left::after {
+      right: -10px;
+    }
+    
+    .right::after {
+      left: -10px;
+    }
+    
+    .timeline-content {
+      padding: 20px;
+      background-color: white;
+      border-radius: 8px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+    }
+    
+    .timeline-content h3 {
+      font-size: 20px;
+      margin-bottom: 10px;
+    }
+    
+    .timeline-content p {
+      color: var(--gray);
+    }
+    
+    .timeline-date {
+      font-weight: 500;
+      color: var(--primary);
+      margin-bottom: 5px;
+    }
+    
+    /* Projects Section */
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+      gap: 30px;
+    }
+    
+    .project-card {
+      background-color: white;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+      transition: all 0.3s;
+    }
+    
+    .project-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+    }
+    
+    .project-img {
+      height: 200px;
+      overflow: hidden;
+    }
+    
+    .project-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.5s;
+    }
+    
+    .project-card:hover .project-img img {
+      transform: scale(1.1);
+    }
+    
+    .project-info {
+      padding: 20px;
+    }
+    
+    .project-info h3 {
+      font-size: 22px;
+      margin-bottom: 10px;
+    }
+    
+    .project-info p {
+      color: var(--gray);
+      margin-bottom: 15px;
+    }
+    
+    .project-links a {
+      display: inline-block;
+      margin-right: 15px;
+      color: var(--primary);
+      text-decoration: none;
+      font-weight: 500;
+    }
+    
+    .project-links a:hover {
+      text-decoration: underline;
+    }
+
+    /* Testimonials Section */
+    .testimonials {
+      padding: 100px 0;
+      background-color: #f9f9f9;
+    }
+
+    .testimonials-container {
+      display: flex;
+      justify-content: center;
+      gap: 30px;
+      flex-wrap: wrap;
+      margin-top: 50px;
+    }
+
+    .testimonial-card {
+      background-color: white;
+      border-radius: 10px;
+      padding: 30px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+      width: calc(33.333% - 20px);
+      min-width: 280px;
+      transition: transform 0.3s;
+    }
+
+    .testimonial-card:hover {
+      transform: translateY(-10px);
+    }
+
+    .testimonial-card p {
+      font-style: italic;
+      color: var(--gray);
+      margin-bottom: 20px;
+      position: relative;
+    }
+
+    .testimonial-card p::before {
+      content: '"';
+      font-size: 60px;
+      color: var(--light-gray);
+      position: absolute;
+      left: -15px;
+      top: -30px;
+      line-height: 1;
+      z-index: 0;
+    }
+
+    .testimonial-author {
+      font-weight: 600;
+      color: var(--dark);
+    }
+
+    .testimonial-role {
+      color: var(--gray);
+      font-size: 14px;
+    }
+    
+    /* Contact Section */
+    .contact-container {
+      display: flex;
+      gap: 50px;
+    }
+    
+    .contact-info {
+      flex: 1;
+    }
+    
+    .contact-info h3 {
+      font-size: 24px;
+      margin-bottom: 20px;
+    }
+    
+    .contact-details {
+      margin-bottom: 30px;
+    }
+    
+    .contact-details p {
+      margin-bottom: 10px;
+      color: var(--gray);
+    }
+    
+    .contact-details a {
+      color: var(--primary);
+      text-decoration: none;
+    }
+    
+    .contact-details a:hover {
+      text-decoration: underline;
+    }
+    
+    .social-links {
+      display: flex;
+      gap: 15px;
+    }
+    
+    .social-links a {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 40px;
+      height: 40px;
+      background-color: var(--light-gray);
+      border-radius: 50%;
+      color: var(--dark);
+      text-decoration: none;
+      transition: all 0.3s;
+    }
+    
+    .social-links a:hover {
+      background-color: var(--primary);
+      color: white;
+    }
+    
+    .contact-form {
+      flex: 1;
+      background-color: white;
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+    }
+    
+    .form-group {
+      margin-bottom: 20px;
+    }
+    
+    .form-group label {
+      display: block;
+      margin-bottom: 8px;
+      font-weight: 500;
+    }
+    
+    .form-control {
+      width: 100%;
+      padding: 12px 15px;
+      border: 1px solid var(--light-gray);
+      border-radius: 5px;
+      font-family: 'Inter', sans-serif;
+      transition: border-color 0.3s;
+    }
+    
+    .form-control:focus {
+      outline: none;
+      border-color: var(--primary);
+    }
+    
+    textarea.form-control {
+      min-height: 150px;
+      resize: vertical;
+    }
+    /* Footer */
+    footer {
+      background-color: var(--dark);
+      color: white;
+      padding: 50px 0 20px;
+      text-align: center;
+    }
+    
+    .footer-content {
+      margin-bottom: 30px;
+    }
+    
+    .footer-links {
+      display: flex;
+      justify-content: center;
+      list-style: none;
+      margin-bottom: 30px;
+    }
+    
+    .footer-links li {
+      margin: 0 15px;
+    }
+    
+    .footer-links a {
+      color: white;
+      text-decoration: none;
+      transition: color 0.3s;
+    }
+    
+    .footer-links a:hover {
+      color: var(--primary);
+    }
+    
+    .copyright {
+      color: rgba(255,255,255,0.7);
+      font-size: 14px;
+    }
+    
+    /* Responsive Styles */
+    @media (max-width: 768px) {
+      .hero h1 {
+        font-size: 36px;
+      }
+      
+      .about-content {
+        flex-direction: column;
+      }
+      
+      .timeline::after {
+        left: 31px;
+      }
+      
+      .timeline-item {
+        width: 100%;
+        padding-left: 70px;
+        padding-right: 0;
+      }
+      
+      .left::after, .right::after {
+        left: 21px;
+      }
+      
+      .right {
+        left: 0;
+      }
+      
+      .contact-container {
+        flex-direction: column;
+      }
+
+      .testimonial-card {
+        width: calc(50% - 15px);
+      }
+    }
+    
+    @media (max-width: 576px) {
+      .nav-links {
+        display: none;
+      }
+      
+      .hero h1 {
+        font-size: 32px;
+      }
+      
+      .projects-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .testimonial-card {
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Header -->
+  <header>
+    <div class="container">
+      <nav>
+        <a href="#" class="logo">
+          <img src="Casual Moses.jpg" alt="Moses Mwombe" class="logo-img">
+          Moses Mwombe
+        </a>
+        <ul class="nav-links">
+          <li><a href="#about">About</a></li>
+          <li><a href="#skills">Skills</a></li>
+          <li><a href="#education">Education</a></li>
+          <li><a href="#projects">Projects</a></li>
+          <li><a href="#testimonials">Testimonials</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="container">
+      <div class="hero-content">
+        <h1>Hi, I'm <span style="color: var(--primary);">Moses Mwombe</span></h1>
+        <p>A passionate developer specializing in AI and Machine Learning(Automation). I build digital solutions that make an impact.</p>
+        <a href="#projects" class="btn">View My Work</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- About Section -->
+  <section id="about" class="section">
+    <div class="container">
+      <div class="about-content">
+        <div class="about-img">
+          <img src="Casual Moses.jpg" alt="Moses Mwombe" class="about-image">
+        </div>
+        <div class="about-text">
+          <h2>About Me</h2>
+          <p>Hello! I'm Moses Mwombe, a passionate developer with years of experience in creating innovative solutions. I specialize in Artificial Intelligence and Machine Learning. Besides that I offer services in web development, software engineering, and IT consultancy. My goal is to deliver impactful solutions that drive success for businesses and individuals.</p>
+          <p>With a strong educational background and a commitment to staying updated with the latest technologies, I bring a unique perspective to every project I work on.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Skills Section -->
+  <section id="skills" class="section bg-light">
+    <div class="container">
+      <div class="section-title">
+        <h2>My Skills</h2>
+        <p>The tools and technologies I work with</p>
+      </div>
+      <div class="skills-container">
+        <div class="skill-card">
+          <h3>Programming Languages</h3>
+          <ul>
+            <li>JavaScript (ES6+)</li>
+            <li>Python</li>
+            <li>Java</li>
+            <li>C++</li>
+            <li>TypeScript</li>
+          </ul>
+        </div>
+        <div class="skill-card">
+          <h3>Frontend Development</h3>
+          <ul>
+            <li>React.js</li>
+            <li>Vue.js</li>
+            <li>HTML5 & CSS3</li>
+            <li>Sass/Less</li>
+            <li>Responsive Design</li>
+          </ul>
+        </div>
+        <div class="skill-card">
+          <h3>Backend Development</h3>
+          <ul>
+            <li>Node.js</li>
+            <li>Express</li>
+            <li>Django</li>
+            <li>RESTful APIs</li>
+            <li>GraphQL</li>
+          </ul>
+        </div>
+        <div class="skill-card">
+          <h3>Other Technologies</h3>
+          <ul>
+            <li>Git & GitHub</li>
+            <li>Docker</li>
+            <li>AWS</li>
+            <li>CI/CD Pipelines</li>
+            <li>Testing (Jest, Mocha)</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Education Section -->
+  <section id="education" class="section">
+    <div class="container">
+      <div class="section-title">
+        <h2>Education</h2>
+        <p>My academic journey and certifications</p>
+      </div>
+      <div class="timeline">
+        <div class="timeline-item left">
+          <div class="timeline-content">
+            <div class="timeline-date">2025 - Present</div>
+            <h3>Diploma in Software Engineering</h3>
+            <p>Zetech University, Ruiru-Kenya</p>
+            <p>Specialization: [Your Specialization]</p>
+            <p>GPA: X.XX/4.0</p>
+          </div>
+        </div>
+        <div class="timeline-item right">
+          <div class="timeline-content">
+            <div class="timeline-date">2025</div>
+            <h3>Certification in EndPoint Security</h3>
+            <p>Cisco NetAcad</p>
+            <p>Focus: CyberSecurity</p>
+          </div>
+        </div>
+        <div class="timeline-item left">
+          <div class="timeline-content">
+            <div class="timeline-date">2011 - 2014</div>
+            <h3>High School Diploma</h3>
+            <p>Malava Boys High Sc, Malava-Kenya</p>
+            <p>Focus: Science and Mathematics</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Projects Section -->
+  <section id="projects" class="section bg-light">
+    <div class="container">
+      <div class="section-title">
+        <h2>My Projects</h2>
+        <p>A selection of my recent work</p>
+      </div>
+      <div class="projects-grid">
+        <div class="project-card">
+          <div class="project-img">
+            <img src="https://via.placeholder.com/600x400" alt="Project 1">
+          </div>
+          <div class="project-info">
+            <h3>E-commerce Platform</h3>
+            <p>A full-stack e-commerce solution with React frontend, Node.js backend, and MongoDB database.</p>
+            <div class="project-links">
+              <a href="#" target="_blank">Live Demo</a>
+              <a href="#" target="_blank">GitHub</a>
+            </div>
+          </div>
+        </div>
+        <div class="project-card">
+          <div class="project-img">
+            <img src="https://via.placeholder.com/600x400" alt="Project 2">
+          </div>
+          <div class="project-info">
+            <h3>Task Management App</h3>
+            <p>A productivity application built with Vue.js and Firebase for real-time task management.</p>
+            <div class="project-links">
+              <a href="#" target="_blank">Live Demo</a>
+              <a href="#" target="_blank">GitHub</a>
+            </div>
+          </div>
+        </div>
+        <div class="project-card">
+          <div class="project-img">
+            <img src="https://via.placeholder.com/600x400" alt="Project 3">
+          </div>
+          <div class="project-info">
+            <h3>Machine Learning Model</h3>
+            <p>A Python-based ML model for predicting [specific use case] with 95% accuracy.</p>
+            <div class="project-links">
+              <a href="#" target="_blank">Live Demo</a>
+              <a href="#" target="_blank">GitHub</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Testimonials Section -->
+  <section id="testimonials" class="section">
+    <div class="container">
+      <div class="section-title">
+        <h2>Client Testimonials</h2>
+        <p>What people say about working with me</p>
+      </div>
+      <div class="testimonials-container">
+        <div class="testimonial-card">
+          <p>Excellent service and attention to detail. Moses delivered our project ahead of schedule and exceeded our expectations.</p>
+          <div class="testimonial-author">John Doe</div>
+          <div class="testimonial-role">CEO, Example Company</div>
+        </div>
+        <div class="testimonial-card">
+          <p>A true professional who understood our needs perfectly. The solution Moses provided has significantly improved our workflow.</p>
+          <div class="testimonial-author">Jane Smith</div>
+          <div class="testimonial-role">CTO, Tech Solutions Inc.</div>
+        </div>
+        <div class="testimonial-card">
+          <p>The best experience I've had working with a developer. Moses is creative, responsive, and delivers high-quality work.</p>
+          <div class="testimonial-author">Mike Johnson</div>
+          <div class="testimonial-role">Product Manager, Startup Co.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section id="contact" class="section">
+    <div class="container">
+      <div class="section-title">
+        <h2>Get In Touch</h2>
+        <p>I'd love to hear from you about opportunities or collaborations</p>
+      </div>
+      <div class="contact-container">
+        <div class="contact-info">
+          <h3>Contact Information</h3>
+          <div class="contact-details">
+            <p><strong>Email:</strong> <a href="mailto:youremail@example.com">iammwombe@gmail.com</a></p>
+            <p><strong>Phone:</strong> <a href="tel:+254234567890">+254 (702) 359-618</a></p>
+            <p><strong>Location:</strong> Nairobi, Kenya</p>
+          </div>
+          <h3 style="margin-top: 30px;">Connect With Me</h3>
+          <div class="social-links">
+            <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+            <a href="#" aria-label="GitHub"><i class="fab fa-github"></i></a>
+            <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+            <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+          </div>
+        </div>
+        <div class="contact-form">
+          <form>
+            <div class="form-group">
+              <label for="name">Name</label>
+              <input type="text" id="name" class="form-control" required>
+            </div>
+            <div class="form-group">
+              <label for="email">Email</label>
+              <input type="email" id="email" class="form-control" required>
+            </div>
+            <div class="form-group">
+              <label for="subject">Subject</label>
+              <input type="text" id="subject" class="form-control" required>
+            </div>
+            <div class="form-group">
+              <label for="message">Message</label>
+              <textarea id="message" class="form-control" required></textarea>
+            </div>
+            <button type="submit" class="btn">Send Message</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <div class="footer-content">
+        <a href="#" class="logo" style="color: white; margin-bottom: 20px; display: inline-block;">Moses Mwombe</a>
+        <p style="max-width: 600px; margin: 0 auto 30px; color: rgba(255,255,255,0.7);">A passionate developer creating innovative solutions to complex problems.</p>
+        <ul class="footer-links">
+          <li><a href="#about">About</a></li>
+          <li><a href="#skills">Skills</a></li>
+          <li><a href="#education">Education</a></li>
+          <li><a href="#projects">Projects</a></li>
+          <li><a href="#testimonials">Testimonials</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </div>
+      <div class="copyright">
+        <p>&copy; 2023 Moses Mwombe. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Font Awesome for icons -->
+  <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+</body>
+</html>
